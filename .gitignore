@@ -10,3 +10,6 @@ nytprof.out
 MANIFEST.bak
 *.sw[po]
 Debian_CPANTS.txt
+MYMETA.json
+MYMETA.yml
+.prove

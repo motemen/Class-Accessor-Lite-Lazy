@@ -1,6 +1,7 @@
 package Class::Accessor::Lite::Lazy;
 use strict;
 use warnings;
+use 5.008_001;
 use parent 'Class::Accessor::Lite';
 use Carp ();
 
@@ -116,7 +117,8 @@ Class::Accessor::Lite::Lazy - Class::Accessor::Lite with lazy accessor feature
 
 Class::Accessor::Lite::Lazy provides a "lazy" accessor feature to L<Class::Accessor::Lite>.
 
-If a lazy accessor without any value set is called, a builder method is called to generate a value to set. The builder for an accessor I<$attr> should be named as _build_I<$attr>.
+If a lazy accessor without any value set is called, a builder method is called to generate a value to set.
+The builder for an accessor I<$attr> should be named as _build_I<$attr>.
 
 =head1 THE USE STATEMENT
 

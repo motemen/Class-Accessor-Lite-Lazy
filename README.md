@@ -28,7 +28,8 @@ Class::Accessor::Lite::Lazy - Class::Accessor::Lite with lazy accessor feature
 
 Class::Accessor::Lite::Lazy provides a "lazy" accessor feature to [Class::Accessor::Lite](http://search.cpan.org/perldoc?Class::Accessor::Lite).
 
-If a lazy accessor without any value set is called, a builder method is called to generate a value to set. The builder for an accessor _$attr_ should be named as \_build\__$attr_.
+If a lazy accessor without any value set is called, a builder method is called to generate a value to set.
+The builder for an accessor _$attr_ should be named as \_build\__$attr_.
 
 # THE USE STATEMENT
 
