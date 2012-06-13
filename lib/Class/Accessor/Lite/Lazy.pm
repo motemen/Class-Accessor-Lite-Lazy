@@ -40,23 +40,25 @@ sub mk_ro_lazy_accessors {
 
 sub _mk_ro_lazy_accessors {
     my $pkg = shift;
+    my %decls = map { ref $_ eq 'HASH' ? ( %$_ ) : ( $_ => undef ) } @_;
     no strict 'refs';
-    foreach my $name (@_) {
-        *{"$pkg\::$name"} = __m_ro_lazy($pkg, $name);
+    while (my ($name, $builder) = each %decls) {
+        *{"$pkg\::$name"} = __m_ro_lazy($pkg, $name, $builder);
     }
 }
 
 sub _mk_lazy_accessors {
     my $pkg = shift;
+    my %decls = map { ref $_ eq 'HASH' ? ( %$_ ) : ( $_ => undef ) } @_;
     no strict 'refs';
-    foreach my $name (@_) {
-        *{"$pkg\::$name"} = __m_lazy($name);
+    while (my ($name, $builder) = each %decls) {
+        *{"$pkg\::$name"} = __m_lazy($name, $builder);
     }
 }
 
 sub __m_ro_lazy {
-    my ($pkg, $name) = @_;
-    my $builder = "_build_$name";
+    my ($pkg, $name, $builder) = @_;
+    $builder = "_build_$name" unless defined $builder;
     return sub {
         if (@_ == 1) {
             return $_[0]->{$name} if exists $_[0]->{$name};
@@ -69,8 +71,8 @@ sub __m_ro_lazy {
 }
 
 sub __m_lazy {
-    my $name = shift;
-    my $builder = "_build_$name";
+    my ($name, $builder) = @_;
+    $builder = "_build_$name" unless defined $builder;
     return sub {
         if (@_ == 1) {
             return $_[0]->{$name} if exists $_[0]->{$name};

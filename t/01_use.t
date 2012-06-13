@@ -9,8 +9,8 @@ use Test::Fatal;
         new => 1,
         ro  => [ 'foo' ],
         rw  => [ 'bar' ],
-        ro_lazy => [ 'hoge' ],
-        rw_lazy => [ 'fuga', 'attr_witout_builder' ],
+        ro_lazy => [ 'hoge', { poyo => \&make_poyo, poe => 'make_poe' } ],
+        rw_lazy => [ 'fuga', 'attr_witout_builder', { baz => 'make_baz' } ],
     );
 
     sub _build_hoge {
@@ -19,6 +19,18 @@ use Test::Fatal;
 
     sub _build_fuga {
         'yyy';
+    }
+
+    sub make_poyo {
+        'poyo';
+    }
+
+    sub make_poe {
+        'poe';
+    }
+
+    sub make_baz {
+        rand();
     }
 }
 
@@ -44,5 +56,12 @@ is $l->fuga, 'zzz';
 is_deeply $l, { foo => 1, bar => 3, hoge => 'xxx', fuga => 'zzz' };
 
 ok exception { $l->attr_witout_builder };
+
+is $l->poyo, 'poyo';
+is $l->poe,  'poe';
+
+is $l->baz, $l->baz;
+$l->baz('baz');
+is $l->baz, 'baz';
 
 done_testing;
