@@ -49,11 +49,11 @@ As [Class::Accessor::Lite](http://search.cpan.org/perldoc?Class::Accessor::Lite)
 
 # FUNCTIONS
 
-- Class::Accessor::Lite::Lazy->mk\_lazy\_accessors(@name\_of\_the\_properties);
+- `Class::Accessor::Lite::Lazy->mk_lazy_accessors(@name_of_the_properties)`
 
     Creates lazy accessors in current package.
 
-- Class::Accessor::Lite::Lazy->mk\_ro\_lazy\_accessors(@name\_of\_the\_properties);
+- `Class::Accessor::Lite::Lazy->mk_ro_lazy_accessors(@name_of_the_properties)`
 
     Creates read-only lazy accessors in current package.
 

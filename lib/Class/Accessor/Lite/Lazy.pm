@@ -146,11 +146,11 @@ Same as L<Class::Accessor::Lite>.
 
 =over 4
 
-=item Class::Accessor::Lite::Lazy->mk_lazy_accessors(@name_of_the_properties);
+=item C<< Class::Accessor::Lite::Lazy->mk_lazy_accessors(@name_of_the_properties) >>
 
 Creates lazy accessors in current package.
 
-=item Class::Accessor::Lite::Lazy->mk_ro_lazy_accessors(@name_of_the_properties);
+=item C<< Class::Accessor::Lite::Lazy->mk_ro_lazy_accessors(@name_of_the_properties) >>
 
 Creates read-only lazy accessors in current package.
 
