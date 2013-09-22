@@ -7,7 +7,18 @@ Class::Accessor::Lite::Lazy - Class::Accessor::Lite with lazy accessor feature
     package MyPackage;
 
     use Class::Accessor::Lite::Lazy (
-        rw_lazy => [ qw(foo) ],
+        rw_lazy => [
+          # implicit builder method name is "_build_foo"
+          qw(foo foo2),
+          # or specify builder explicitly
+          {
+            xxx => 'method_name',
+            yyy => sub {
+              my $self = shift;
+              ...
+            },
+          }
+        ],
         ro_lazy => [ qw(bar) ],
         # Class::Accessor::Lite functionality is also available
         new => 1,
@@ -29,17 +40,16 @@ Class::Accessor::Lite::Lazy - Class::Accessor::Lite with lazy accessor feature
 Class::Accessor::Lite::Lazy provides a "lazy" accessor feature to [Class::Accessor::Lite](http://search.cpan.org/perldoc?Class::Accessor::Lite).
 
 If a lazy accessor without any value set is called, a builder method is called to generate a value to set.
-The builder for an accessor _$attr_ should be named as \_build\__$attr_.
 
 # THE USE STATEMENT
 
 As [Class::Accessor::Lite](http://search.cpan.org/perldoc?Class::Accessor::Lite), the use statement provides the way to create lazy accessors.
 
-- rw\_lazy => \\@name\_of\_the\_properties
+- rw\_lazy => \\@name\_of\_the\_properties | \\%properties\_and\_builders
 
     Creates read / write lazy accessors.
 
-- ro\_lazy => \\@name\_of\_the\_properties
+- ro\_lazy => \\@name\_of\_the\_properties | \\%properties\_and\_builders
 
     Creates read-only lazy accessors.
 
@@ -56,6 +66,15 @@ As [Class::Accessor::Lite](http://search.cpan.org/perldoc?Class::Accessor::Lite)
 - `Class::Accessor::Lite::Lazy->mk_ro_lazy_accessors(@name_of_the_properties)`
 
     Creates read-only lazy accessors in current package.
+
+# SPECIFYING BUILDERS
+
+As seen in SYNOPSIS, each attribute is specified by either a string or a hashref.
+
+In the string form `$attr`, the builder method name for the attribute _$attr_ is named \_build\__$attr_.
+
+In the hashref form `{ $attr => $method_name | \&builder }`, each key is the attribute name and each value is
+either a string which specifies the builder method name or a coderef itself.
 
 # AUTHOR
 
