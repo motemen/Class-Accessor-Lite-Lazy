@@ -1,5 +1,7 @@
 Revision history for Perl extension Class::Accessor::Lite::Lazy
 
+{{$NEXT}}
+
 0.02    Wed Jun 13 19:31:14 2012
         - support for r[ow]_lazy => \&$builder
 

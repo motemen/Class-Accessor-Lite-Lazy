@@ -13,3 +13,10 @@ Debian_CPANTS.txt
 MYMETA.json
 MYMETA.yml
 .prove
+/Class-Accessor-Lite-Lazy-*
+/.build
+/_build_params
+/Build
+!Build/
+!META.json
+!LICENSE

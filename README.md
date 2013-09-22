@@ -37,25 +37,25 @@ As [Class::Accessor::Lite](http://search.cpan.org/perldoc?Class::Accessor::Lite)
 
 - rw\_lazy => \\@name\_of\_the\_properties
 
-Creates read / write lazy accessors.
+    Creates read / write lazy accessors.
 
 - ro\_lazy => \\@name\_of\_the\_properties
 
-Creates read-only lazy accessors.
+    Creates read-only lazy accessors.
 
 - new, rw, ro, wo
 
-Same as [Class::Accessor::Lite](http://search.cpan.org/perldoc?Class::Accessor::Lite).
+    Same as [Class::Accessor::Lite](http://search.cpan.org/perldoc?Class::Accessor::Lite).
 
 # FUNCTIONS
 
 - Class::Accessor::Lite::Lazy->mk\_lazy\_accessors(@name\_of\_the\_properties);
 
-Creates lazy accessors in current package.
+    Creates lazy accessors in current package.
 
 - Class::Accessor::Lite::Lazy->mk\_ro\_lazy\_accessors(@name\_of\_the\_properties);
 
-Creates read-only lazy accessors in current package.
+    Creates read-only lazy accessors in current package.
 
 # AUTHOR
 
