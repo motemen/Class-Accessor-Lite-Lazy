@@ -17,8 +17,9 @@ sub import {
     my $pkg = caller;
     foreach my $key (sort keys %key_ctor) {
         if (defined (my $value = delete $args{$key})) {
-            Carp::croak "value of the '$key' parameter should be an arrayref"
-                unless ref($value) eq 'ARRAY';
+            Carp::croak "value of the '$key' parameter should be an arrayref or hashref"
+                unless ref($value) =~ /^(ARRAY|HASH)$/;
+            $value = [ $value ] if ref $value eq 'HASH';
             $key_ctor{$key}->($pkg, @$value);
         }
     }

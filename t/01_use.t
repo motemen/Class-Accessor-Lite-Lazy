@@ -32,6 +32,14 @@ use Test::Fatal;
     sub make_baz {
         rand();
     }
+
+    package M;
+    use Class::Accessor::Lite::Lazy (
+        new => 1,
+        ro_lazy => {
+            foo => sub { ++(our $x) }
+        },
+    );
 }
 
 my $l = new_ok 'L', [ foo => 1, bar => 2 ];
@@ -63,5 +71,9 @@ is $l->poe,  'poe';
 is $l->baz, $l->baz;
 $l->baz('baz');
 is $l->baz, 'baz';
+
+my $m = new_ok 'M';
+is $m->foo, 1;
+is $m->foo, 1;
 
 done_testing;
