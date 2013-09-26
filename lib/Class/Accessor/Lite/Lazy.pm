@@ -125,7 +125,6 @@ Class::Accessor::Lite::Lazy - Class::Accessor::Lite with lazy accessor feature
       }
   );
 
-
   sub _build_foo {
       my $self = shift;
       ...
