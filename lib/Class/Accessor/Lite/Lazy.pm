@@ -117,6 +117,15 @@ Class::Accessor::Lite::Lazy - Class::Accessor::Lite with lazy accessor feature
       rw  => [ qw(baz) ],
   );
 
+  # or if you specify all attributes' builders explicitly
+  use Class::Accessor::Lite::Lazy (
+      rw_lazy => {
+        foo => '_build_foo',
+        bar => \&_build_bar,
+      }
+  );
+
+
   sub _build_foo {
       my $self = shift;
       ...
@@ -171,9 +180,9 @@ Creates read-only lazy accessors in current package.
 
 As seen in SYNOPSIS, each attribute is specified by either a string or a hashref.
 
-In the string form C<< $attr >>, the builder method name for the attribute I<$attr> is named _build_I<$attr>.
+In the string form C<< $attr >> you specify builders implicitly, the builder method name for the attribute I<$attr> is named _build_I<$attr>.
 
-In the hashref form C<< { $attr => $method_name | \&builder } >>, each key is the attribute name and each value is
+In the hashref form C<< { $attr => $method_name | \&builder } >> you can explicitly specify builders, each key is the attribute name and each value is
 either a string which specifies the builder method name or a coderef itself.
 
 =head1 AUTHOR
