@@ -5,7 +5,7 @@ use 5.008_001;
 use parent 'Class::Accessor::Lite';
 use Carp ();
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 my %key_ctor = (
     ro_lazy => \&_mk_ro_lazy_accessors,

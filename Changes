@@ -2,8 +2,11 @@ Revision history for Perl extension Class::Accessor::Lite::Lazy
 
 {{$NEXT}}
 
+0.03 2013-09-27T05:04:55Z
+        - support for hashref syntax, r[ow]_lazy => { attr => builder, ... }
+
 0.02    Wed Jun 13 19:31:14 2012
-        - support for r[ow]_lazy => \&$builder
+        - support for r[ow]_lazy => [ { attr => \&$builder }, ... ]
 
 0.01    Wed Apr 11 22:02:01 2012
         - original version
